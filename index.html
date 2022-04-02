@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+
+		.boxs {
+			height: 100px;
+			width: 100px;
+			background-color: green;
+			border: solid black;
+			position: absolute;
+			background-size: 100%;
+		}
+		.firsBox {
+			background-color: white;
+			background-image: url(duckl.png);
+		}
+
+		.content{
+			margin-left: 200px;
+			text-align: center;
+			color: white;
+		}
+
+		.bt{
+			position: absolute;
+			top: 300px;
+		}
+
+		.score{
+
+		}
+
+	</style>
+</head>
+<body style="background-image: url(back.png); background-size: cover;">
+	<div class="content">
+		<h4 style="margin-left: 20px">Score: <span class="score">0</span></h4>
+		<img src="dice.png" class="bt" style="width: 100px; margin-left: 0px">		
+		<div class="boxs firsBox" style="margin-left: 20px">
+			<h4>finish</h4>
+		</div>
+		<div class="boxs" style="margin-left: 130px">1</div>
+		<div class="boxs" style="margin-left: 240px">2</div>
+		<div class="boxs" style="margin-left: 350px; background-color: red">3<p>Осечка</p></div>
+				
+		<div class="boxs" style="margin-left: 460px">4</div> 
+		<div class="boxs" style="margin-left: 570px">5</div>
+		<div class="boxs" style="margin-left: 680px;  background-color: red">6<p>Неподача патрона</p></div>
+		<div class="boxs" style="margin-left: 790px">7</div>
+
+		<div class="boxs" style="margin-left: 900px">8</div>
+		<div class="boxs" style="margin-left: 1010px;background-color: red" >9<p>Осечка</p></div>
+		<div class="boxs" style="margin-left: 1120px">10</div>
+		<div class="boxs" style="margin-left: 1230px">11</div>
+
+		<div class="boxs" style="margin-left: 1340px;background-color: red">12 
+			<p>Клин</p>
+		</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 110px">13</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 220px">14</div>	
+		<div class="boxs" style="margin-left: 1340px; margin-top: 330px">15</div>		
+
+		<div class="boxs" style="margin-left: 1340px; margin-top: 440px">16</div>
+		<div class="boxs" style="margin-left: 1230px; margin-top: 440px; background-color: purple;">17 <p>Быстрые пальчики</p></div>
+		<div class="boxs" style="margin-left: 1120px; margin-top: 440px">18</div>
+		<div class="boxs" style="margin-left: 1010px; margin-top: 440px">19</div>
+
+		<div class="boxs" style="margin-left: 900px; margin-top: 440px">20</div>
+		<div class="boxs" style="margin-left: 790px; margin-top: 440px">21</div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 440px; background-color:red;">22<p>Перекос</p></div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 440px">23</div>
+
+		<div class="boxs" style="margin-left: 460px; margin-top: 440px">24</div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 440px">25</div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 440px; background-color: purple;">26<p>Смазка</p></div>
+		<div class="boxs" style="margin-left: 130px; margin-top: 440px">27</div>
+
+		<div class="boxs" style="margin-left: 20px; margin-top: 440px">28</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 330px">29</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 220px">30</div>	
+		<div class="boxs" style="margin-left: 20px; margin-top: 110px; background-color:red;">31<p>КЛИН</p></div>		
+
+		<!--последние дивы-->
+		<div class="boxs" style="margin-left: 130px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 460px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 110px; background-color: green; opacity: 0"></div>
+
+	</div>	
+		
+</body>
+</html>
+
+
+
+
+
+
+<script>
+
+	let score = document.querySelector('.score')
+	let boxs = document.querySelectorAll('.boxs')
+	let bt = document.querySelector('.bt');
+	let step = 0;
+	let count = 0;
+
+	bt.onclick = function(){
+		let n = Math.random();
+		let ran = n * 6;
+		let rand = Math.round(ran);
+		boxs[step].style.backgroundImage = 'none';
+		alert(rand);
+
+		step = step + rand;
+		count = step;
+
+		if(step == 3){
+			alert('U messed up');
+			step = 2;
+			count = 2;
+		}
+
+		if(step == 6){
+			alert('DOOR STUCK!');
+			step = 5;
+			count = 5;
+		}
+
+		if(step == 9){
+			alert('Chick!');
+			step = 8;
+			count = 8;
+		}
+
+		if(step == 12){
+			alert('meeh, fix dat thing');
+			step = 7;
+			count = 7;
+		}
+
+		if(step > 31){
+			alert('You are empty');
+			count = 'you passed';
+		}
+
+		if(step == 17){
+			alert('Swing swing!');
+			step = 21;
+			count = 21;
+		}
+
+		if(step == 22){
+			alert('Minus one');
+			step = 21;
+			count = 21;
+		}
+
+		if(step == 26){
+			alert('Smooooth');
+			step = 28;
+			count = 28;
+		}
+
+		if(step == 31){
+			alert('So close');
+			step = 29;
+			count = 29;
+		}
+
+		score.innerHTML = count;
+		boxs[step].style.backgroundImage = 'url(duckl.png)';
+	}
+
+</script>
